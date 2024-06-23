@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.Atmel.ARMGCC.C</ToolchainName>
+    <ProjectGuid>{c9237625-746d-401f-8a02-e7fdf7b8df5e}</ProjectGuid>
+    <avrdevice>ATSAME54P20A</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>bootloader</AssemblyName>
+    <Name>bootloader</Name>
+    <RootNamespace>bootloader</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <eraseonlaunchrule>1</eraseonlaunchrule>
+    <AsfVersion>3.5.0</AsfVersion>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <BootSegment>2</BootSegment>
+    <AsfFrameworkConfig>
+      <framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.28.1" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <preserveEEPROM>true</preserveEEPROM>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug_build' ">
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <ToolchainSettings>
+      <ArmGcc>
+  <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
+  <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
+  <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
+  <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
+  <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
+  <armgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__SAME54P20A__</Value>
+      <Value>USE_CMSIS_INIT</Value>
+      <Value>USE_SAME54_XPLAINED_PRO</Value>
+      <Value>_WINSOCK_H</Value>
+    </ListValues>
+  </armgcc.compiler.symbols.DefSymbols>
+  <armgcc.compiler.directories.DefaultIncludePath>False</armgcc.compiler.directories.DefaultIncludePath>
+  <armgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>..\..\src</Value>
+      <Value>..\..\..\..\..\..\..\third_party\cmsis\include</Value>
+      <Value>..\..\..\..\..\..\..\third_party\microchip\devices\same54</Value>
+      <Value>..\..\..\..\..\..\..\third_party\microchip\boards\same54_xplained_pro</Value>
+      <Value>..\..\..\..\..\..\..\common</Value>
+      <Value>..\..\..\..\..\..\..\cyclone_crypto</Value>
+      <Value>..\..\..\..\..\..\..\cyclone_boot</Value>
+    </ListValues>
+  </armgcc.compiler.directories.IncludePaths>
+  <armgcc.compiler.optimization.OtherFlags>-fdata-sections</armgcc.compiler.optimization.OtherFlags>
+  <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
+  <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
+  <armgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -fms-extensions -mfpu=vfpv4 -mfloat-abi=softfp</armgcc.compiler.miscellaneous.OtherFlags>
+  <armgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </armgcc.linker.libraries.Libraries>
+  <armgcc.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>..</Value>
+    </ListValues>
+  </armgcc.linker.libraries.LibrarySearchPaths>
+  <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
+  <armgcc.linker.miscellaneous.LinkerFlags>-Tsame54_flash.ld -Wl,--entry=Reset_Handler -Wl,--defsym=malloc_getpagesize_P=0x80</armgcc.linker.miscellaneous.LinkerFlags>
+  <armgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\CMSIS\Include</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL\same54\include</Value>
+    </ListValues>
+  </armgcc.assembler.general.IncludePaths>
+  <armgcc.assembler.debugging.DebugLevel>Default (-g)</armgcc.assembler.debugging.DebugLevel>
+  <armgcc.preprocessingassembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\CMSIS\Include</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL</Value>
+      <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL\same54\include</Value>
+    </ListValues>
+  </armgcc.preprocessingassembler.general.IncludePaths>
+  <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
+</ArmGcc>
+    </ToolchainSettings>
+    <PostBuildEvent>python.exe ../../scripts/misc/copy_file.py ./bootloader.bin ../../</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include=".\startup_same54.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\startup_same54.c</Link>
+    </Compile>
+    <Compile Include="..\src\system_same54.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\system_same54.c</Link>
+    </Compile>
+    <Compile Include=".\syscalls.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\syscalls.c</Link>
+    </Compile>
+    <Compile Include="..\src\main.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\main.c</Link>
+    </Compile>
+    <Compile Include="..\src\debug.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\debug.c</Link>
+    </Compile>
+    <Compile Include="..\src\os_port_config.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\os_port_config.h</Link>
+    </Compile>
+    <Compile Include="..\src\boot_config.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\boot_config.h</Link>
+    </Compile>
+    <Compile Include="..\src\crypto_config.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\crypto_config.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\cpu_endian.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\cpu_endian.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\os_port_none.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\os_port_none.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\date_time.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\date_time.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\str.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\str.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\cpu_endian.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\cpu_endian.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\os_port.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\os_port.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\os_port_none.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\os_port_none.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\date_time.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\date_time.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\str.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\str.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\error.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\error.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\debug.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\debug.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\crc32.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\crc32.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\mcu\arm\sam_ed_5x_mcu_driver.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\sam_ed_5x_mcu_driver.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\memory\flash\internal\sam_ed_5x_flash_driver.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\sam_ed_5x_flash_driver.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\image.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\memory\memory.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\memory.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\cipher.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\cipher.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\bootloader\boot.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\boot.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\bootloader\boot_fallback.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\boot_fallback.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\bootloader\boot_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\boot_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\cboot_error.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\cboot_error.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\crc32.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\crc32.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\flash.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\flash.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\mcu.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\mcu.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\mcu\arm\sam_ed_5x_mcu_driver.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\sam_ed_5x_mcu_driver.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\memory\flash\internal\sam_ed_5x_flash_driver.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\sam_ed_5x_flash_driver.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\image.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\memory\memory.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\memory.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\memory\memory_ex.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\memory_ex.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\cipher.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\cipher.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\bootloader\boot.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\boot.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\bootloader\boot_fallback.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\boot_fallback.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\bootloader\boot_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\boot_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha256.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\sha256.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\aes.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\aes.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher_modes\cbc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\cbc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\core\crypto.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\crypto.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\aes.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\aes.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher_modes\cbc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\cbc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\microchip\boards\same54_xplained_pro\same54_xplained_pro.h">
+      <SubType>compile</SubType>
+      <Link>SAME54-Xplained-Pro_Headers\same54_xplained_pro.h</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Demo_Sources" />
+    <Folder Include="Demo_Headers" />
+    <Folder Include="Common_Sources" />
+    <Folder Include="Common_Headers" />
+    <Folder Include="CycloneBOOT_Sources" />
+    <Folder Include="CycloneBOOT_Headers" />
+    <Folder Include="CycloneCRYPTO_Sources" />
+    <Folder Include="CycloneCRYPTO_Headers" />
+    <Folder Include="SAME54-Xplained-Pro_Headers" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>

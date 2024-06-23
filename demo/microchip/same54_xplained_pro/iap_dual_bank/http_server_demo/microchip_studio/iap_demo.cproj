@@ -1,0 +1,1411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.Atmel.ARMGCC.C</ToolchainName>
+    <ProjectGuid>{c9237625-746d-401f-8a02-e7fdf7b8df5e}</ProjectGuid>
+    <avrdevice>ATSAME54P20A</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>iap_demo</AssemblyName>
+    <Name>iap_demo</Name>
+    <RootNamespace>iap_demo</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <eraseonlaunchrule>1</eraseonlaunchrule>
+    <AsfVersion>3.5.0</AsfVersion>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <BootSegment>2</BootSegment>
+    <AsfFrameworkConfig>
+      <framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.28.1" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <preserveEEPROM>true</preserveEEPROM>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug_build' ">
+    <PreBuildEvent>..\..\..\..\..\..\..\utils\ResourceCompiler\bin\rc.exe ..\..\resources\ ..\..\src\res.c</PreBuildEvent>
+    <ToolchainSettings>
+      <ArmGcc>
+        <armgcc.common.outputfiles.hex>True</armgcc.common.outputfiles.hex>
+        <armgcc.common.outputfiles.lss>True</armgcc.common.outputfiles.lss>
+        <armgcc.common.outputfiles.eep>True</armgcc.common.outputfiles.eep>
+        <armgcc.common.outputfiles.bin>True</armgcc.common.outputfiles.bin>
+        <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
+        <armgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>__SAME54P20A__</Value>
+            <Value>USE_CMSIS_INIT</Value>
+            <Value>USE_SAME54_XPLAINED_PRO</Value>
+            <Value>FLASH_DB_MODE</Value>
+            <Value>_WINSOCK_H</Value>
+          </ListValues>
+        </armgcc.compiler.symbols.DefSymbols>
+        <armgcc.compiler.directories.DefaultIncludePath>False</armgcc.compiler.directories.DefaultIncludePath>
+        <armgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>..\..\src</Value>
+            <Value>..\..\..\..\..\..\..\third_party\cmsis\include</Value>
+            <Value>..\..\..\..\..\..\..\third_party\microchip\devices\same54</Value>
+            <Value>..\..\..\..\..\..\..\third_party\microchip\boards\same54_xplained_pro</Value>
+            <Value>..\..\..\..\..\..\..\third_party\freertos\include</Value>
+            <Value>..\..\..\..\..\..\..\third_party\freertos\portable\gcc\arm_cm4f</Value>
+            <Value>..\..\..\..\..\..\..\common</Value>
+            <Value>..\..\..\..\..\..\..\cyclone_tcp</Value>
+            <Value>..\..\..\..\..\..\..\cyclone_crypto</Value>
+            <Value>..\..\..\..\..\..\..\cyclone_boot</Value>
+          </ListValues>
+        </armgcc.compiler.directories.IncludePaths>
+        <armgcc.compiler.optimization.OtherFlags>-fdata-sections</armgcc.compiler.optimization.OtherFlags>
+        <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+        <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
+        <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
+        <armgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -fms-extensions -mfpu=vfpv4 -mfloat-abi=softfp</armgcc.compiler.miscellaneous.OtherFlags>
+        <armgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </armgcc.linker.libraries.Libraries>
+        <armgcc.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>..</Value>
+          </ListValues>
+        </armgcc.linker.libraries.LibrarySearchPaths>
+        <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
+        <armgcc.linker.miscellaneous.LinkerFlags>-Tsame54_flash.ld -Wl,--entry=Reset_Handler -Wl,--defsym=malloc_getpagesize_P=0x80</armgcc.linker.miscellaneous.LinkerFlags>
+        <armgcc.assembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel</Value>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\CMSIS\Include</Value>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL</Value>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL\same54\include</Value>
+          </ListValues>
+        </armgcc.assembler.general.IncludePaths>
+        <armgcc.assembler.debugging.DebugLevel>Default (-g)</armgcc.assembler.debugging.DebugLevel>
+        <armgcc.preprocessingassembler.general.IncludePaths>
+          <ListValues>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel</Value>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\CMSIS\Include</Value>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL</Value>
+            <Value>%24(ToolchainDir)\..\..\CMSIS_Atmel\Device\ATMEL\same54\include</Value>
+          </ListValues>
+        </armgcc.preprocessingassembler.general.IncludePaths>
+        <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
+      </ArmGcc>
+    </ToolchainSettings>
+    <PostBuildEvent>python.exe ..\..\scripts\misc\copy_file.py .\iap_demo.bin ..\..\</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include=".\startup_same54.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\startup_same54.c</Link>
+    </Compile>
+    <Compile Include="..\src\system_same54.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\system_same54.c</Link>
+    </Compile>
+    <Compile Include=".\syscalls.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\syscalls.c</Link>
+    </Compile>
+    <Compile Include="..\src\main.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\main.c</Link>
+    </Compile>
+    <Compile Include="..\src\debug.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\debug.c</Link>
+    </Compile>
+    <Compile Include="..\src\http_server_callbacks.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\http_server_callbacks.c</Link>
+    </Compile>
+    <Compile Include="..\src\res.c">
+      <SubType>compile</SubType>
+      <Link>Demo_Sources\res.c</Link>
+    </Compile>
+    <Compile Include="..\src\os_port_config.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\os_port_config.h</Link>
+    </Compile>
+    <Compile Include="..\src\FreeRTOSConfig.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\FreeRTOSConfig.h</Link>
+    </Compile>
+    <Compile Include="..\src\boot_config.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\boot_config.h</Link>
+    </Compile>
+    <Compile Include="..\src\net_config.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\net_config.h</Link>
+    </Compile>
+    <Compile Include="..\src\crypto_config.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\crypto_config.h</Link>
+    </Compile>
+    <Compile Include="..\src\http_server_callbacks.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\http_server_callbacks.h</Link>
+    </Compile>
+    <Compile Include="..\src\version.h">
+      <SubType>compile</SubType>
+      <Link>Demo_Headers\version.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\cpu_endian.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\cpu_endian.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\os_port_freertos.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\os_port_freertos.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\date_time.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\date_time.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\str.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\str.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\path.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\path.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\resource_manager.c">
+      <SubType>compile</SubType>
+      <Link>Common_Sources\resource_manager.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\cpu_endian.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\cpu_endian.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\os_port.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\os_port.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\os_port_freertos.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\os_port_freertos.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\date_time.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\date_time.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\str.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\str.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\path.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\path.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\resource_manager.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\resource_manager.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\error.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\error.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\common\debug.h">
+      <SubType>compile</SubType>
+      <Link>Common_Headers\debug.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\crc32.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\crc32.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\mcu\arm\sam_ed_5x_mcu_driver.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\sam_ed_5x_mcu_driver.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\memory\flash\internal\sam_ed_5x_flash_driver.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\sam_ed_5x_flash_driver.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\image.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image_process.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\image_process.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image_utils.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\image_utils.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\memory\memory.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\memory.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\memory\memory_ex.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\memory_ex.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\verify.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\verify.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\verify_auth.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\verify_auth.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\verify_sign.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\verify_sign.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\cipher.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\cipher.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\update\update.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\update.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\update\update_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\update_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\update\update_fallback.c">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Sources\update_fallback.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\cboot_error.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\cboot_error.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\crc32.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\crc32.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\flash.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\flash.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\core\mcu.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\mcu.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\mcu\arm\sam_ed_5x_mcu_driver.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\sam_ed_5x_mcu_driver.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\drivers\memory\flash\internal\sam_ed_5x_flash_driver.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\sam_ed_5x_flash_driver.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\image.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image_process.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\image_process.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\image\image_utils.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\image_utils.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\memory\memory.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\memory.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\memory\memory_ex.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\memory_ex.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\verify.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\verify.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\verify_auth.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\verify_auth.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\verify_sign.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\verify_sign.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\security\cipher.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\cipher.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\update\update.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\update.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\update\update_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\update_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_boot\update\update_fallback.h">
+      <SubType>compile</SubType>
+      <Link>CycloneBOOT_Headers\update_fallback.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\net.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\net.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\net_mem.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\net_mem.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\net_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\net_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\drivers\mac\same54_eth_driver.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\same54_eth_driver.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\drivers\phy\ksz8091_driver.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ksz8091_driver.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\nic.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\nic.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\ethernet.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ethernet.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\ethernet_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ethernet_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\arp.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\arp.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\arp_cache.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\arp_cache.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\ipv4.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ipv4.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\ipv4_frag.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ipv4_frag.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\ipv4_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ipv4_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\icmp.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\icmp.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\igmp\igmp_host.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\igmp_host.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\igmp\igmp_host_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\igmp_host_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\igmp\igmp_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\igmp_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ipv6.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6_frag.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ipv6_frag.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ipv6_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6_pmtu.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ipv6_pmtu.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\icmpv6.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\icmpv6.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\mld.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\mld.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ndp.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ndp.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ndp_cache.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ndp_cache.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ndp_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ndp_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\slaac.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\slaac.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\slaac_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\slaac_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\ip.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ip.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\tcp.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp_fsm.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\tcp_fsm.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\tcp_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp_timer.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\tcp_timer.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\udp.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\udp.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\socket.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\socket.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\socket_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\socket_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\bsd_socket.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\bsd_socket.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\bsd_socket_options.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\bsd_socket_options.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\bsd_socket_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\bsd_socket_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\raw_socket.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\raw_socket.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_cache.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dns_cache.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_client.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dns_client.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dns_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_debug.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dns_debug.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_client.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\mdns_client.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_responder.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\mdns_responder.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_responder_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\mdns_responder_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\mdns_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\netbios\nbns_client.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\nbns_client.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\netbios\nbns_responder.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\nbns_responder.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\netbios\nbns_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\nbns_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\llmnr\llmnr_client.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\llmnr_client.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\llmnr\llmnr_responder.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\llmnr_responder.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\llmnr\llmnr_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\llmnr_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_client.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dhcp_client.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_client_fsm.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dhcp_client_fsm.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_client_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dhcp_client_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dhcp_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_debug.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\dhcp_debug.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\http_server.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\http_server.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\http_server_auth.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\http_server_auth.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\http_server_misc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\http_server_misc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\mime.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\mime.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\ssi.c">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Sources\ssi.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\net.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\net.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\net_mem.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\net_mem.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\net_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\net_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\drivers\mac\same54_eth_driver.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\same54_eth_driver.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\drivers\phy\ksz8091_driver.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ksz8091_driver.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\nic.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\nic.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\ethernet.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ethernet.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\ethernet_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ethernet_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\arp.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\arp.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\arp_cache.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\arp_cache.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\ipv4.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ipv4.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\ipv4_frag.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ipv4_frag.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\ipv4_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ipv4_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv4\icmp.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\icmp.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\igmp\igmp_host.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\igmp_host.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\igmp\igmp_host_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\igmp_host_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\igmp\igmp_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\igmp_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ipv6.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6_frag.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ipv6_frag.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ipv6_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ipv6_pmtu.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ipv6_pmtu.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\icmpv6.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\icmpv6.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\mld.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\mld.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ndp.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ndp.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ndp_cache.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ndp_cache.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\ndp_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ndp_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\slaac.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\slaac.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\ipv6\slaac_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\slaac_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\ip.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ip.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\tcp.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp_fsm.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\tcp_fsm.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\tcp_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\tcp_timer.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\tcp_timer.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\udp.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\udp.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\socket.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\socket.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\socket_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\socket_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\bsd_socket.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\bsd_socket.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\bsd_socket_options.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\bsd_socket_options.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\bsd_socket_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\bsd_socket_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\core\raw_socket.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\raw_socket.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_cache.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dns_cache.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_client.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dns_client.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dns_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dns\dns_debug.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dns_debug.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_client.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\mdns_client.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_responder.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\mdns_responder.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_responder_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\mdns_responder_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\mdns\mdns_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\mdns_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\netbios\nbns_client.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\nbns_client.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\netbios\nbns_responder.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\nbns_responder.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\netbios\nbns_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\nbns_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\llmnr\llmnr_client.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\llmnr_client.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\llmnr\llmnr_responder.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\llmnr_responder.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\llmnr\llmnr_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\llmnr_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_client.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dhcp_client.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_client_fsm.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dhcp_client_fsm.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_client_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dhcp_client_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dhcp_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\dhcp\dhcp_debug.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\dhcp_debug.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\http_server.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\http_server.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\http_server_auth.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\http_server_auth.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\http_server_misc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\http_server_misc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\mime.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\mime.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_tcp\http\ssi.h">
+      <SubType>compile</SubType>
+      <Link>CycloneTCP_Headers\ssi.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\md5.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\md5.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha1.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\sha1.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha224.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\sha224.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha256.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\sha256.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha384.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\sha384.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha512.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\sha512.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\mac\hmac.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\hmac.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\rc4.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\rc4.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\idea.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\idea.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\des.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\des.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\des3.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\des3.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\aes.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\aes.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\camellia.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\camellia.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\seed.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\seed.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\aria.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\aria.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher_modes\cbc.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\cbc.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\aead\ccm.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\ccm.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\aead\gcm.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\gcm.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\chacha.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\chacha.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\mac\poly1305.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\poly1305.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\aead\chacha20_poly1305.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\chacha20_poly1305.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkc\dh.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\dh.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkc\rsa.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\rsa.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkc\dsa.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\dsa.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ec.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\ec.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ec_curves.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\ec_curves.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ecdh.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\ecdh.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ecdsa.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\ecdsa.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\eddsa.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\eddsa.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\curve25519.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\curve25519.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\curve448.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\curve448.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\x25519.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x25519.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\x448.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x448.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ed25519.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\ed25519.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ed448.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\ed448.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\mpi\mpi.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\mpi.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\encoding\base64.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\base64.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\encoding\asn1.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\asn1.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\encoding\oid.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\oid.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pem_import.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\pem_import.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pem_decrypt.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\pem_decrypt.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pem_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\pem_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pkcs5_decrypt.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\pkcs5_decrypt.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pkcs5_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\pkcs5_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pkcs8_key_parse.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\pkcs8_key_parse.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_key_parse.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x509_key_parse.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_cert_parse.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x509_cert_parse.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_cert_validate.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x509_cert_validate.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_cert_ext_parse.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x509_cert_ext_parse.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_common.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x509_common.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_sign_parse.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x509_sign_parse.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_sign_verify.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\x509_sign_verify.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\kdf\hkdf.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\hkdf.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\rng\yarrow.c">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Sources\yarrow.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\core\crypto.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\crypto.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\md5.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\md5.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha1.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\sha1.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha224.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\sha224.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha256.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\sha256.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha384.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\sha384.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\hash\sha512.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\sha512.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\mac\hmac.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\hmac.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\rc4.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\rc4.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\idea.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\idea.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\des.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\des.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\des3.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\des3.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\aes.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\aes.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\camellia.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\camellia.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\seed.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\seed.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\aria.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\aria.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher_modes\cbc.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\cbc.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\aead\ccm.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\ccm.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\aead\gcm.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\gcm.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\cipher\chacha.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\chacha.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\mac\poly1305.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\poly1305.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\aead\chacha20_poly1305.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\chacha20_poly1305.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkc\dh.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\dh.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkc\rsa.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\rsa.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkc\dsa.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\dsa.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ec.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\ec.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ec_curves.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\ec_curves.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ecdh.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\ecdh.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ecdsa.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\ecdsa.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\eddsa.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\eddsa.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\curve25519.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\curve25519.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\curve448.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\curve448.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\x25519.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x25519.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\x448.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x448.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ed25519.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\ed25519.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\ecc\ed448.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\ed448.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\mpi\mpi.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\mpi.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\encoding\base64.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\base64.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\encoding\asn1.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\asn1.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\encoding\oid.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\oid.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pem_import.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\pem_import.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pem_decrypt.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\pem_decrypt.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pem_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\pem_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pkcs5_decrypt.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\pkcs5_decrypt.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pkcs5_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\pkcs5_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\pkcs8_key_parse.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\pkcs8_key_parse.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_key_parse.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x509_key_parse.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_cert_parse.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x509_cert_parse.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_cert_validate.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x509_cert_validate.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_cert_ext_parse.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x509_cert_ext_parse.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_common.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x509_common.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_sign_parse.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x509_sign_parse.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\pkix\x509_sign_verify.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\x509_sign_verify.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\kdf\hkdf.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\hkdf.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\cyclone_crypto\rng\yarrow.h">
+      <SubType>compile</SubType>
+      <Link>CycloneCRYPTO_Headers\yarrow.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\portable\gcc\arm_cm4f\port.c">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Sources\port.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\croutine.c">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Sources\croutine.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\list.c">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Sources\list.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\queue.c">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Sources\queue.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\tasks.c">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Sources\tasks.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\timers.c">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Sources\timers.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\portable\memmang\heap_3.c">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Sources\heap_3.c</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\portable\gcc\arm_cm4f\portmacro.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\portmacro.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\croutine.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\croutine.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\FreeRTOS.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\FreeRTOS.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\list.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\list.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\mpu_wrappers.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\mpu_wrappers.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\portable.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\portable.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\projdefs.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\projdefs.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\queue.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\queue.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\semphr.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\semphr.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\stack_macros.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\stack_macros.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\task.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\task.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\freertos\include\timers.h">
+      <SubType>compile</SubType>
+      <Link>FreeRTOS_Headers\timers.h</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\..\..\third_party\microchip\boards\same54_xplained_pro\same54_xplained_pro.h">
+      <SubType>compile</SubType>
+      <Link>SAME54-Xplained-Pro_Headers\same54_xplained_pro.h</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Demo_Sources" />
+    <Folder Include="Demo_Headers" />
+    <Folder Include="Common_Sources" />
+    <Folder Include="Common_Headers" />
+    <Folder Include="CycloneBOOT_Sources" />
+    <Folder Include="CycloneBOOT_Headers" />
+    <Folder Include="CycloneTCP_Sources" />
+    <Folder Include="CycloneTCP_Headers" />
+    <Folder Include="CycloneCRYPTO_Sources" />
+    <Folder Include="CycloneCRYPTO_Headers" />
+    <Folder Include="FreeRTOS_Sources" />
+    <Folder Include="FreeRTOS_Headers" />
+    <Folder Include="SAME54-Xplained-Pro_Headers" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>

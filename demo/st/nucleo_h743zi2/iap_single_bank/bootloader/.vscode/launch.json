@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/home/arazly/Downloads/cb/CycloneBOOT_Eval_3_0_4/demo/st/nucleo_h743zi2/iap_single_bank/bootloader/src",
+      "program": "/home/arazly/Downloads/cb/CycloneBOOT_Eval_3_0_4/demo/st/nucleo_h743zi2/iap_single_bank/bootloader/src/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

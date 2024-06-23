@@ -1,0 +1,5 @@
+Halt
+LoadFile ../iap_demo_1_0_0_bootable.bin 0x00020000
+r
+Go
+Exit

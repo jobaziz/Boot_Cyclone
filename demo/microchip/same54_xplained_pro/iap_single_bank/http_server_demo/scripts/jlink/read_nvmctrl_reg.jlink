@@ -1,0 +1,6 @@
+Halt
+log .\temp.log
+mem8 0x41004012 1
+r
+Go
+Exit

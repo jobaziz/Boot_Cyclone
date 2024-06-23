@@ -1,0 +1,5 @@
+Halt
+LoadFile ../bootloader.bin 0x00000000
+r
+Go
+Exit

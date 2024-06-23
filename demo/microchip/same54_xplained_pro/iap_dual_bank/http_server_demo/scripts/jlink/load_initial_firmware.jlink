@@ -1,0 +1,5 @@
+Halt
+LoadFile ../iap_demo_1_0_0.bin 0x00000000
+r
+Go
+Exit

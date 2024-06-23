@@ -1,0 +1,5 @@
+Halt
+Erase 0x00000000 0x00100000
+r
+Go
+Exit
